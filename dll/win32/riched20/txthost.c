@@ -25,7 +25,7 @@
 #include "richole.h"
 #include "imm.h"
 #include "textserv.h"
-#include "wine/asm.h"
+#include "riched20_asm.h"
 #include "wine/debug.h"
 #include "editstr.h"
 
@@ -535,7 +535,7 @@ DEFINE_THISCALL_WRAPPER(ITextHostImpl_TxImmGetContext,4)
 DEFINE_THISCALL_WRAPPER(ITextHostImpl_TxImmReleaseContext,8)
 DEFINE_THISCALL_WRAPPER(ITextHostImpl_TxGetSelectionBarWidth,8)
 
-#if defined(__i386__) && !defined(__MINGW32__)  /* thiscall functions are i386-specific */
+#ifdef __i386__  /* thiscall functions are i386-specific */
 
 #define STDCALL(func) (void *) __stdcall_ ## func
 #ifdef _MSC_VER
